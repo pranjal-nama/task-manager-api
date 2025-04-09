@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.models.task import Task
-from app.services.task_service import create_task_service, get_all_tasks_service
+from app.services.task_service import create_task_service, get_all_tasks_service, update_task_service
 
 task_bp = Blueprint('tasks', __name__)
 
@@ -30,3 +30,20 @@ def get_all_tasks():
     user_id = get_jwt_identity()
     tasks = get_all_tasks_service(user_id)
     return jsonify([task.to_dict() for task in tasks]), 200
+
+
+@task_bp.route('/update/<int:task_id>', methods=['PUT'])
+@jwt_required()
+def update_task_route(task_id):
+    data = request.get_json()
+    user_id = get_jwt_identity()
+
+    title = data.get('title')
+    description = data.get('description')
+    status = data.get('status')
+
+    try:
+        updated_task = update_task_service(task_id, user_id, title, description, status)
+        return jsonify(updated_task.to_dict()), 200
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
