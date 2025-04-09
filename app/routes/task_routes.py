@@ -49,7 +49,7 @@ def update_task_route(task_id):
         return jsonify({"error": str(e)}), 400
 
 
-@task_bp.route('/<int:task_id>', methods=['DELETE'])
+@task_bp.route('/delete/<int:task_id>', methods=['DELETE'])
 @jwt_required()
 def delete_task_route(task_id):
     user_id = get_jwt_identity()
