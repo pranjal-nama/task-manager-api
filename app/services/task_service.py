@@ -16,3 +16,6 @@ def create_task_service(user_id, title, description=None, status="pending"):
     db.session.add(task)
     db.session.commit()
     return task
+
+def get_all_tasks_service(user_id):
+    return Task.query.filter_by(user_id=user_id).order_by(Task.created_time.desc()).all()
