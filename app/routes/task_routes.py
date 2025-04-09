@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.models.task import Task
-from app.services.task_service import create_task_service, get_all_tasks_service, update_task_service
+from app.services.task_service import create_task_service, get_all_tasks_service, update_task_service, delete_task_service
 
 task_bp = Blueprint('tasks', __name__)
 
@@ -47,3 +47,14 @@ def update_task_route(task_id):
         return jsonify(updated_task.to_dict()), 200
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
+
+
+@task_bp.route('/<int:task_id>', methods=['DELETE'])
+@jwt_required()
+def delete_task_route(task_id):
+    user_id = get_jwt_identity()
+    try:
+        delete_task_service(task_id, user_id)
+        return jsonify({"message": "Task deleted successfully"}), 200
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 404

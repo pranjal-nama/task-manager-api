@@ -39,3 +39,12 @@ def update_task_service(task_id, user_id, title=None, description=None, status=N
 
     db.session.commit()
     return task
+
+
+def delete_task_service(task_id, user_id):
+    task = Task.query.filter_by(id=task_id, user_id=user_id).first()
+    if not task:
+        raise ValueError("Task not found or not authorized to delete")
+    
+    db.session.delete(task)
+    db.session.commit()
