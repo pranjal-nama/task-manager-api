@@ -60,5 +60,5 @@ def login_user(email, password):
     if not user or not user.check_password(password):
         raise InvalidCredentials("Invalid email or password")
 
-    access_token = create_access_token(identity=user.id, expires_delta=timedelta(hours=1))
+    access_token = create_access_token(identity=str(user.id), expires_delta=timedelta(hours=1))
     return access_token

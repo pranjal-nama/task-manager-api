@@ -8,6 +8,7 @@ task_bp = Blueprint('tasks', __name__)
 @task_bp.route('/create', methods=['POST'])
 @jwt_required()
 def create_task_route():
+    print("pranjal")
     data = request.get_json()
     title = data.get('title')
     description = data.get('description')
