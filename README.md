@@ -45,10 +45,10 @@ flask run
 ```
 
 🌍 Deployed API
-Base URL: 
+Base URL: [Deployed Application URL](https://task-manager-api-9u1g.onrender.com)
 
 📮 Postman Collection
-🔗 Click to open Postman Collection
+🔗 [Click to open Postman Collection](https://restless-comet-225423.postman.co/workspace/New-Team-Workspace~3bd7df40-53ee-4d3d-a669-c5d20e5b5ce2/collection/24880685-f0dc90b5-f5e3-41a5-bde9-7dd03c8c8d90?action=share&creator=24880685)
 
 📘 API Endpoints
 All routes require a JWT token:
