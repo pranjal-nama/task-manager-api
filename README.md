@@ -56,18 +56,12 @@ All routes require a JWT token:
 Authorization: Bearer <your_token_here>
 ```
 
-🧑 Authentication
+🧑 Authentication  
+POST /api/auth/register – Register a user  
+POST /api/auth/login – Login and receive JWT  
 
-POST /api/auth/register – Register a user
-
-POST /api/auth/login – Login and receive JWT
-
-✅ Task Management
-
-POST /api/tasks/create – Create a task
-
-GET /api/tasks/all – Get all tasks
-
-PUT /api/tasks/update/<task_id> – Update a task
-
-DELETE /api/tasks/delete/<task_id> – Delete a task
+✅ Task Management  
+POST /api/tasks/create – Create a task  
+GET /api/tasks/all – Get all tasks  
+PUT /api/tasks/update/<task_id> – Update a task  
+DELETE /api/tasks/delete/<task_id> – Delete a task  
