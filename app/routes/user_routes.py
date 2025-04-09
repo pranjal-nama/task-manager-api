@@ -1,5 +1,4 @@
 from flask import request, jsonify, Blueprint
-from app.auth import auth_bp
 from app.services.user_service import create_user, login_user, UserAlreadyExists, PasswordTooShort, InvalidEmailFormat, InvalidCredentials
 
 auth_bp = Blueprint('auth', __name__)
